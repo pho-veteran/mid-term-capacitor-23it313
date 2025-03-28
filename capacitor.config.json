@@ -1,0 +1,11 @@
+{
+    "appId": "com.vinh.test",
+    "appName": "test",
+    "webDir": "dist",
+    "plugins": {
+        "LocalNotifications": {
+            "smallIcon": "ic_stat_access_time",
+            "iconColor": "#3B82F6"
+        }
+    }
+}
