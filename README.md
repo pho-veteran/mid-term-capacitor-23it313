@@ -49,13 +49,6 @@ npx cap sync
 # Mở Android Studio
 npx cap open android
 
-# Sau khi Android Studio mở, bạn có thể:
-# 1. Kết nối thiết bị Android qua USB
-# 2. Bật chế độ USB Debugging trên thiết bị
-# 3. Chọn thiết bị từ danh sách trong Android Studio
-# 4. Nhấn nút Run (biểu tượng play) để chạy ứng dụng
-```
-
 ## Hướng dẫn sử dụng các tính năng
 
 ### Camera
@@ -63,14 +56,10 @@ npx cap open android
 - Chọn ảnh từ thư viện: Nhấn nút "Chọn ảnh"
 
 ### Thời gian
-- Xem thời gian hiện tại: Nhấn nút "Xem giờ"
-- Đặt báo thức: Chọn thời gian và nhấn "Đặt báo thức"
-- Đồng hồ đếm ngược: Nhập thời gian và nhấn "Bắt đầu"
+- Xem thời gian hiện tại: Nhấn nút "Hiển thị thời gian"
 
 ### Chia sẻ
-- Chia sẻ văn bản: Chọn nội dung và nhấn nút "Chia sẻ" để chia sẻ thời gian hiện tại.
+- Chia sẻ văn bản: Chọn nội dung và nhấn nút "Chia sẻ" để chia sẻ thời gian hiện tại sau khi hiển thị"
 
 ### Thông báo
-- Nhận thông báo push: Đăng ký trong phần Cài đặt
-- Quản lý thông báo: Vào Cài đặt > Thông báo
-- Tắt/bật thông báo: Vào Cài đặt > Thông báo > Tùy chọn
+- Nhận thông báo push: Sau khi nhấn hiển thị thời gian
