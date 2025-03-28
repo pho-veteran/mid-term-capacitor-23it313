@@ -1,11 +1,21 @@
 {
-    "appId": "com.vinh.test",
-    "appName": "test",
+    "appId": "com.vinhnt23it.timedisplay",
+    "appName": "Hiển Thị Thời Gian",
     "webDir": "dist",
     "plugins": {
         "LocalNotifications": {
             "smallIcon": "ic_stat_access_time",
             "iconColor": "#3B82F6"
+        },
+        "Camera": {
+            "ios": {
+                "CameraUsageDescription": "Ứng dụng cần truy cập camera để chụp ảnh với thời gian",
+                "PhotoLibraryUsageDescription": "Ứng dụng cần truy cập thư viện ảnh để chọn ảnh"
+            },
+            "android": {
+                "CameraPermission": "Cho phép truy cập camera để chụp ảnh",
+                "WriteExternalStoragePermission": "Cho phép lưu ảnh tạm để chia sẻ"
+            }
         }
     }
 }

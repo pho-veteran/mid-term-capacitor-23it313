@@ -1,14 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import { TimeDisplay } from "./components/TimeDisplay";
 import { TimeControls } from "./components/TimeControls";
 import { useTime } from "./hooks/useTime";
 import { ThemeToggle } from "./components/ThemeToggle";
+import { LocalNotifications } from "@capacitor/local-notifications";
 
 export default function App() {
     const [darkMode, setDarkMode] = useState(false);
-    const { currentTime, isLoading, getCurrentTime, shareTime, captureScreen } =
-        useTime();
+    
+    const {
+        currentTime,
+        isLoading,
+        photo,
+        isTakingPhoto,
+        getCurrentTime,
+        shareContent,
+        takePhoto,
+        removePhoto,
+    } = useTime();
+
+    const requestNotificationPermission = async () => {
+        const permStatus = await LocalNotifications.requestPermissions();
+        if (permStatus.display !== "granted") {
+            console.warn("Người dùng từ chối quyền thông báo");
+        }
+    };
+
+    useEffect(() => {
+        requestNotificationPermission();
+    }, []);
 
     return (
         <div
@@ -18,7 +39,9 @@ export default function App() {
                     : "bg-gradient-to-b from-blue-50 to-purple-50 text-gray-800"
             }`}
         >
-            <div className="flex-1 flex flex-col justify-center p-4">
+            <ThemeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+
+            <div className="flex-1 flex flex-col justify-center p-4 pt-16">
                 <div
                     className={`mx-auto w-full max-w-md rounded-2xl shadow-xl overflow-hidden transition-all duration-300 ${
                         darkMode
@@ -26,11 +49,7 @@ export default function App() {
                             : "bg-white border-gray-200"
                     }`}
                 >
-                    <div className="p-6 relative">
-                        <ThemeToggle
-                            darkMode={darkMode}
-                            setDarkMode={setDarkMode}
-                        />
+                    <div className="p-6">
                         <Header darkMode={darkMode} />
 
                         <div className="my-4">
@@ -44,9 +63,12 @@ export default function App() {
                         {currentTime && (
                             <TimeDisplay
                                 time={currentTime}
-                                onShare={shareTime}
-                                onCapture={captureScreen}
+                                onShare={shareContent}
+                                onTakePhoto={takePhoto}
+                                onRemovePhoto={removePhoto}
+                                photo={photo}
                                 darkMode={darkMode}
+                                isTakingPhoto={isTakingPhoto}
                             />
                         )}
                     </div>
